@@ -1,6 +1,0 @@
-// Person.aidl
-package kr.co.sleeptime.serviceaidlserver.entity;
-
-// Declare any non-default types here with import statements
-
-parcelable Person;
