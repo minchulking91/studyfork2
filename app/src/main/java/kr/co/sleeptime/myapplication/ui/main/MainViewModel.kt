@@ -13,7 +13,6 @@ import kr.co.sleeptime.myapplication.domain.usecase.PersonAgeUseCase
 class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val personRepository: IPersonRepository
     private val personAgeUseCase: PersonAgeUseCase
-
     val age: MutableLiveData<Int> = MutableLiveData()
 
     init {
@@ -23,6 +22,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun calculateAge() {
+        //use case with reactive extensions
         personAgeUseCase.run()
                 .map { it }
                 .flatMap {
@@ -37,15 +37,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                     }
                 }
 
-        personRepository.getPersonWithCallback { persons ->
-            personRepository.getAddressWithCallback { address ->
-                PersonAgeAsyncTask(persons, address) {
-                    age.value = it
-                }
-                        .execute()
-            }
-        }
+        //async task
+        PersonAgeAsyncTask(personRepository) {
+            age.value = it
+        }.execute()
     }
-
-
 }

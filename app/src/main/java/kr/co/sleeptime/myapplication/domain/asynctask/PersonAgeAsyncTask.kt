@@ -1,12 +1,12 @@
 package kr.co.sleeptime.myapplication.domain.asynctask
 
 import android.os.AsyncTask
-import kr.co.sleeptime.myapplication.data.PersonRepository
+import kr.co.sleeptime.myapplication.domain.IPersonRepository
 
 /**
  * blocking
  */
-class PersonAgeAsyncTask(private val personRepository: PersonRepository, private val callback: (Int?) -> Unit) : AsyncTask<Void, Void, Int>() {
+class PersonAgeAsyncTask(private val personRepository: IPersonRepository, private val callback: (Int?) -> Unit) : AsyncTask<Void, Void, Int>() {
     override fun doInBackground(vararg p0: Void?): Int {
         val address = personRepository.getAddress()
         val persons = personRepository.getPerson()
