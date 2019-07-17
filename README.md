@@ -16,7 +16,7 @@
 2주차 - MVVM, Room, Retrofit2
 
 - MVVM, Repository Pattern, Usecase Pattern에 대한 이해.
-- Single Datasource or Multy Datasource Repository Pattern
+- Single Datasource or Multi Datasource Repository Pattern
 
 3주차 - RxJava + (Room, Retrofit2 with RX)
 
